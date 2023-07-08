@@ -20,9 +20,7 @@ class ForecastRepositoryImpl implements ForecastRepository {
         'https://api.openweathermap.org/data/2.5/onecall?lat=-20.758317&units=metric&lon=-41.538827&appid=${dotenv.env['OPEN_WEATHER_KEY']}',
       );
       final list = response.data;
-      log('list: $list');
       final forecast = ForecastAdapter.fromMap(list);
-      log('forecast: $forecast');
       return state.setForecast(forecast);
     } on DioException catch (e, s) {
       return state.setError(ForecastRepositoryException(e.message, s));
