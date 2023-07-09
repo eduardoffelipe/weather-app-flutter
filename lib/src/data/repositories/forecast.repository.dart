@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:dson_adapter/dson_adapter.dart';
 import 'package:weather_app/src/data/adapters/weather.adapter.dart';

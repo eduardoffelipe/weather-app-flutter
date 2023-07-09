@@ -14,7 +14,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Add primary and background colors
     const primary = Color(0xFF622FB5);
     const background = Color(0xFF1B0F36);
 
@@ -35,21 +34,25 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            child: Column(children: [
-              SvgPicture.asset(
-                entry,
-                semanticsLabel: 'A sun through the clouds',
-                alignment: Alignment.center,
-                height: 445,
-                width: 321,
-              ),
-              const SizedBox(height: 48),
-              const TitleHome(),
-              const SizedBox(height: 48),
-              Button(
-                label: 'Get Started',
-                action: () => navigateForecast(context),
-              ),
-            ])));
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(entry,
+                      semanticsLabel: 'A sun through the clouds',
+                      alignment: Alignment.center,
+                      height: 332,
+                      width: 321),
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const TitleHome(),
+                        const SizedBox(height: 32),
+                        Button(
+                          label: 'Get Started',
+                          action: () => navigateForecast(context),
+                        ),
+                      ])
+                ])));
   }
 }

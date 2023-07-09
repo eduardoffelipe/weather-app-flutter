@@ -28,7 +28,7 @@ class ForecastModel {
 
 class Current {
   int? timestamp;
-  double? temperature;
+  String? temperature;
   double? feelsLike;
   int? pressure;
   int? humidity;
@@ -48,7 +48,7 @@ class Current {
 
   Current.fromJson(Map<String, dynamic> json) {
     timestamp = json['dt'];
-    temperature = json['temp'];
+    temperature = json['temp']?.toStringAsFixed(0);
     feelsLike = json['feels_like'];
     pressure = json['pressure'];
     humidity = json['humidity'];
@@ -92,7 +92,7 @@ class Hourly {
 
   // Hourly.fromJson(Map<String, dynamic> json) {
   //   timestamp = json['dt'];
-  //   temperature = json['temp'];
+  //   temperature = json['temp']?.toStringAsFixed(0);
   //   if (json['weather'] != null) {
   //     weather = <Weather>[];
   //     json['weather'].forEach((v) {

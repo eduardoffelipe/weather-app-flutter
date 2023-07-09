@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import 'package:weather_app/src/interactor/cubit/forecast.cubit.dart';
 import 'package:weather_app/src/ui/scenes/Forecast/widgets/details.forecast.dart';
-import 'package:weather_app/src/ui/scenes/Forecast/widgets/temperature_current.forecast.dart';
+import 'package:weather_app/src/ui/scenes/Forecast/widgets/header.forecast.dart';
 
 class ForecastPage extends StatefulWidget {
   const ForecastPage({super.key});
@@ -59,40 +57,13 @@ class _ForecastPageState extends State<ForecastPage> {
             child: Column(
               children: [
                 const SizedBox(height: 48),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    TemperatureCurrent(
-                      temperature: state.forecast?.current?.temperature
-                              ?.toStringAsFixed(0) ??
-                          '0',
-                      city: 'Alegre',
-                      isLoading: state.loading,
-                    ),
-                    Column(
-                      children: [
-                        SvgPicture.asset(
-                          moon,
-                          semanticsLabel: 'A yellow  moon',
-                          alignment: Alignment.center,
-                          height: 100,
-                          width: 100,
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          state.forecast?.current?.weather?.first.description ??
-                              '',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Poppins',
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
+                HeaderForecast(
+                  temperature: state.forecast?.current?.temperature ?? '0',
+                  city: 'Alegre',
+                  isLoading: state.loading,
+                  weatherDescription:
+                      state.forecast?.current?.weather?.first.description ?? '',
+                  icon: moon,
                 ),
                 const SizedBox(height: 48),
                 DetailsForecast(
